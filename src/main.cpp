@@ -65,6 +65,9 @@ void loop() {
                 // Prepare GPS data to send over LoRa
                 String gpsData = String(gps.location.lat(), 6) + "," + String(gps.location.lng(), 6);
                 
+                // Prepend GPS data with a header to indicate it is GPS data
+                gpsData = "GPS:" + gpsData;
+                
                 // Convert GPS data to char array
                 char radiopacket[32];
                 gpsData.toCharArray(radiopacket, 32);
@@ -79,3 +82,4 @@ void loop() {
         }
     }
 }
+
